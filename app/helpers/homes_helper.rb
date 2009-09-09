@@ -23,6 +23,7 @@ module HomesHelper
     event.summary      = "KW #{week+1}"
     event.klass        = "PUBLIC"
     event.sequence     = (index * 52) + week
+    event.uid          = "KW #{index}"
     event
   end
   
