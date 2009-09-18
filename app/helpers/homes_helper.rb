@@ -36,7 +36,7 @@ module HomesHelper
   end
   
   def start_of_first_week(year)
-    fourth_of_january = Date.parse("04.01.#{year}")
+    fourth_of_january = Date.parse("04.Jan.#{year}")
     fourth_of_january.beginning_of_week
   end
 end
