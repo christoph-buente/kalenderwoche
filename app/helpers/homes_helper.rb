@@ -13,22 +13,23 @@ module HomesHelper
       monday = start_of_first_week(year)
       last_day = end_of_last_week(year)
       while monday < last_day do
-        cal.add_event(event_for_week(monday,count))
-        monday += 7
+        sunday = (monday.end_of_week) + 1
+        cal.add_event(event_for_week(monday,sunday,count))
+        monday = sunday
         count += 1
       end
     end
     cal.to_ical
   end
   
-  def event_for_week(monday, count)
+  def event_for_week(monday, sunday, count)
     event              = Icalendar::Event.new
     event.start        = monday
-    event.end          = monday + 7
+    event.end          = sunday
     event.summary      = "KW #{monday.cweek}"
     event.klass        = "PUBLIC"
     event.sequence     = count
-    event.uid          = Digest::SHA1.hexdigest(monday.to_s)
+    event.uid          = Digest::SHA1.hexdigest(monday.to_s + sunday.to_s)
     event
   end
     
