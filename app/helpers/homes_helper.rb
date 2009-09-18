@@ -12,9 +12,9 @@ module HomesHelper
     years.each do |year|
       monday = start_of_first_week(year)
       last_day = end_of_last_week(year)
-      while monday <= last_day do
+      while monday < last_day do
         cal.add_event(event_for_week(monday,count))
-        monday += 6
+        monday += 7
         count += 1
       end
     end
@@ -24,7 +24,7 @@ module HomesHelper
   def event_for_week(monday, count)
     event              = Icalendar::Event.new
     event.start        = monday
-    event.end          = monday + 6
+    event.end          = monday + 7
     event.summary      = "KW #{monday.cweek}"
     event.klass        = "PUBLIC"
     event.sequence     = count
