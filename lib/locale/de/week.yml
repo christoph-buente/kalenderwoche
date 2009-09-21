@@ -1,0 +1,8 @@
+de:
+  week:
+    show:
+      previous_week: « Vorige Woche
+      this_week: Diese Woche
+      next_week: Nächste Woche »
+      week_x_goes_from_to: "Woche {{week}}: {{start}} - {{end}}"
+      week_x: "{{year}} - Kalenderwoche {{week}}"

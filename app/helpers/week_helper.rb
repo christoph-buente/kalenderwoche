@@ -1,6 +1,38 @@
-module HomesHelper
+module WeekHelper
   require 'icalendar'
   require 'digest/sha1'
+  
+  def link_to_previous_week(week, title)
+    path = root_path if (week - 1 == current_week)
+    path ||= week_path(week-1) if week > 1
+    if path
+      link_to title, path 
+    else
+      title
+    end
+  end
+  
+  def link_to_next_week(week, title)
+    path = root_path if (week +1 == current_week)
+    path ||= week_path(week+1) if week < end_of_last_week(Date.today.year).cweek
+    if path
+      link_to title, path 
+    else
+      title
+    end
+  end
+  
+  def link_to_this_week(title)
+    link_to title, root_path
+  end
+  
+  def current_week
+    Date.today.cweek
+  end
+  
+  def current_year
+    Date.today.year
+  end
   
   def calendar(years)
     cal = Icalendar::Calendar.new
@@ -33,12 +65,16 @@ module HomesHelper
     event
   end
     
+  def last_week
+    end_of_last_week(Date.today.year).cweek
+  end
+  
   def start_of_first_week(year)
     fourth_of_january = Date.parse("04.Jan.#{year}")
     fourth_of_january.beginning_of_week
   end
   
   def end_of_last_week(year)
-    Date.parse("04.Jan.#{year}").end_of_year
+    start_of_first_week(year+1) - 1.day
   end
 end

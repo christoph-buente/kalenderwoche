@@ -1,0 +1,25 @@
+.center
+  %h1
+    Welche Kalenderwoche ist heute?
+  = I18n.t('week.show.week_x_goes_from_to', :start => I18n.l(@start_date), :end => I18n.l(@end_date), :week => @week)
+  .calendar
+    .head
+      Woche
+    .week
+      %h1=link_to @week, root_path, :title => "Die aktuelle Kalenderwoche #{Date.today.year} ist #{current_week}"
+  
+  
+  .all_weeks
+    = link_to_previous_week @week, I18n.t('week.show.previous_week')
+    - (1..last_week).each do |week|
+      - case week
+      - when (current_week and @week)
+        %span.week= week
+      - when current_week
+        %span.week= link_to week, root_path, :title => I18n.t('week.show.week_x', :week => week, :year => current_year)
+      - when @week
+        %span.week= week
+      - else
+        %span.week= link_to week, week_path(week), :title => I18n.t('week.show.week_x', :week => week, :year => current_year)
+      %span.separator |
+    = link_to_next_week @week, I18n.t('week.show.next_week')
