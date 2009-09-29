@@ -2,23 +2,53 @@ module WeekHelper
   require 'icalendar'
   require 'digest/sha1'
   
-  def link_to_previous_week(week, title)
-    path = root_path if (week - 1 == current_week)
-    path ||= week_path(week-1) if week > 1
-    if path
-      link_to title, path 
+  def link_to_week(week, year=current_year)
+    if year != current_year
+      link_to week, year_week_path(year,week)
     else
-      title
+      link_to week, week_path(week)
     end
   end
   
-  def link_to_next_week(week, title)
-    path = root_path if (week +1 == current_week)
-    path ||= week_path(week+1) if week < end_of_last_week(Date.today.year).cweek
-    if path
-      link_to title, path 
+  def link_to_previous_week(week, year=current_year, title=I18n.t('week.show.previous_week'))
+    if week > 1
+      link_to_previous_week_with_year(week,year,title)
     else
-      title
+      last_year = (year - 1)
+      link_to_previous_week_with_year(last_week(last_year), last_year, title)
+    end
+  end
+  
+  def link_to_previous_week_without_year(week, title=I18n.t('week.show.previous_week'))
+      link_to title, week_path(week)
+  end
+  
+  def link_to_previous_week_with_year(week, year=current_year, title=I18n.t('week.show.previous_week'))
+    if year == current_year
+      link_to_previous_week_without_year(week, title)
+    else
+      link_to title, year_week_path(year,week)  
+    end
+  end
+  
+  def link_to_next_week(week, year=current_year, title=I18n.t('week.show.next_week'))
+    if week < last_week(year)
+      link_to_next_week_with_year(week,year,title)
+    else
+      next_year = (year + 1)
+      link_to_next_week_with_year(1, next_year, title)
+    end
+  end  
+  
+  def link_to_next_week_without_year(week, title=I18n.t('week.show.previous_week'))
+    link_to title, week_path(week)
+  end
+  
+  def link_to_next_week_with_year(week, year=current_year, title=I18n.t('week.show.previous_week'))
+    if year == current_year
+      link_to_next_week_without_year(week, title)
+    else
+      link_to title, year_week_path(year,week)  
     end
   end
   
@@ -36,9 +66,9 @@ module WeekHelper
   
   def calendar(years)
     cal = Icalendar::Calendar.new
-    cal.custom_property("PRODID","//christophbuente.de - Kalenderwochen//NONSGML//DE")
-    cal.custom_property("X-WR-CALNAME", "Kalenderwochen")
-    cal.custom_property("X-WR-CALDESC", "Kalenderwochen beginnend mit Montag")
+    cal.custom_property("PRODID","//christophbuente.de - #{I18n.t("week.index.calendar_weeks")}//NONSGML//DE")
+    cal.custom_property("X-WR-CALNAME", I18n.t("week.index.calendar_weeks"))
+    cal.custom_property("X-WR-CALDESC", I18n.t("week.index.calendar_weeks_beginning_on_monday"))
     
     count = 0
     years.each do |year|
@@ -58,15 +88,15 @@ module WeekHelper
     event              = Icalendar::Event.new
     event.start        = monday
     event.end          = sunday
-    event.summary      = "KW #{monday.cweek}"
+    event.summary      = "#{I18n.t('week.index.cw')} #{monday.cweek}"
     event.klass        = "PUBLIC"
     event.sequence     = count
     event.uid          = Digest::SHA1.hexdigest(monday.to_s + sunday.to_s)
     event
   end
     
-  def last_week
-    end_of_last_week(Date.today.year).cweek
+  def last_week(year)
+    end_of_last_week(year).cweek
   end
   
   def start_of_first_week(year)

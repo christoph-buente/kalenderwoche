@@ -4,5 +4,14 @@ de:
       previous_week: « Vorige Woche
       this_week: Diese Woche
       next_week: Nächste Woche »
-      week_x_goes_from_to: "Woche {{week}}: {{start}} - {{end}}"
+      week_x_goes_from_to: "{{start}} bis {{end}}"
       week_x: "{{year}} - Kalenderwoche {{week}}"
+      when_is_week_x: "Wann ist eigentlich Kalenderwoche {{week}}?"
+      what_week_is_it: "Welche Kalenderwoche ist heute?"
+      week: Woche
+      the_current_week_is: "Die aktuelle Kalenderwoche {{year}} ist {{week}}"
+      
+    index:
+      calendar_weeks: Kalenderwochen
+      calendar_weeks_beginning_on_monday: "Kalenderwochen, beginnend mit Montag"
+      cw: KW

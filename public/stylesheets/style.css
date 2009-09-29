@@ -402,7 +402,7 @@ p, dl, pre, table, address, fieldset {
   margin-bottom: 20px; }
 
 a {
-  color: #000000; }
+  color: #D51007; }
 
 .center {
   text-align: center;
@@ -422,7 +422,8 @@ a {
     font-size: 150px;
     line-height: 200px; }
     .calendar .week h1 a {
-      text-decoration: none; }
+      text-decoration: none;
+      color: #000000; }
   .calendar .head {
     height: 50px;
     line-height: 50px;

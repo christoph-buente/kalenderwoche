@@ -1,25 +1,37 @@
 .center
-  %h1
-    Welche Kalenderwoche ist heute?
+  
+  -if @week == current_week
+    %h1=I18n.t("week.show.what_week_is_it")
+  -else
+    %h1=I18n.t("week.show.when_is_week_x", :week => @week)
   = I18n.t('week.show.week_x_goes_from_to', :start => I18n.l(@start_date), :end => I18n.l(@end_date), :week => @week)
   .calendar
-    .head
-      Woche
+    .head=I18n.t('week.show.week')
     .week
-      %h1=link_to @week, root_path, :title => "Die aktuelle Kalenderwoche #{Date.today.year} ist #{current_week}"
+      %h1=link_to @week, root_path, :title => I18n.t('week.show.the_current_week_is', :year => Date.today.year, :week =>current_week)
   
   
   .all_weeks
-    = link_to_previous_week @week, I18n.t('week.show.previous_week')
-    - (1..last_week).each do |week|
+    = link_to_previous_week @week - 1, @year
+    - (1..last_week(@year)).each do |week|
       - case week
       - when (current_week and @week)
         %span.week= week
       - when current_week
-        %span.week= link_to week, root_path, :title => I18n.t('week.show.week_x', :week => week, :year => current_year)
+        %span.week= link_to_week(week, @year)
       - when @week
         %span.week= week
       - else
-        %span.week= link_to week, week_path(week), :title => I18n.t('week.show.week_x', :week => week, :year => current_year)
+        %span.week= link_to_week(week, @year)
       %span.separator |
-    = link_to_next_week @week, I18n.t('week.show.next_week')
+    = link_to_next_week @week + 1, @year
+    
+- content_for :meta do
+  %meta{:name => "description", :content => "Wann ist eigentlich Kalenderwoche #{@week}? Sie können sich auch nie merken? Hier können sie jederzeit nachschauen"}
+  %meta{:name => "keywords", :content => "KW #{@week}, Kalenderwoche #{@week}, Kalender, Woche, #{@year}"}
+  
+-content_for :title do
+  - if @week == current_week
+    %title=I18n.t("week.show.what_week_is_it")
+  -else
+    %title=I18n.t("week.show.when_is_week_x", :week => @week)
