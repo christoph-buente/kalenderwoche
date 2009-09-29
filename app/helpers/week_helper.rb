@@ -11,7 +11,7 @@ module WeekHelper
   end
   
   def link_to_previous_week(week, year=current_year, title=I18n.t('week.show.previous_week'))
-    if week > 1
+    if week >= 1
       link_to_previous_week_with_year(week,year,title)
     else
       last_year = (year - 1)
@@ -32,7 +32,7 @@ module WeekHelper
   end
   
   def link_to_next_week(week, year=current_year, title=I18n.t('week.show.next_week'))
-    if week < last_week(year)
+    if week <= last_week(year)
       link_to_next_week_with_year(week,year,title)
     else
       next_year = (year + 1)

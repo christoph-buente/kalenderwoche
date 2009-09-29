@@ -33,7 +33,7 @@ namespace :deploy do
   desc "Symlink all shared filed"
   task :after_symlink do
     run "ln -nfs #{shared_path}/cache #{release_path}/public/cache"
-    run "sudo ln -nfs #{current_path}/config/apache.conf /etc/apache2/sites-available/#{application}.net"
+    run "sudo ln -nfs #{current_path}/config/apache.conf /etc/apache2/sites-available/www.#{application}.net"
   end
   
 end
