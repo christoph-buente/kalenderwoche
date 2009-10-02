@@ -22,4 +22,5 @@
   %body
     .container_16
       =yield
-  
+      
+    = render :partial => 'shared/footer', :locals => {:week => @week, :year => @year}

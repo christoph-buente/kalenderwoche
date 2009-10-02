@@ -14,8 +14,14 @@ class ApplicationController < ActionController::Base
   protected
   
   def set_locale
-    I18n.locale = extract_locale_from_subdomain || set_locale_from_url
+    locale = extract_locale_from_subdomain || extract_locale_from_url || extract_locale_from_cookie || extract_from_default
+    if locale
+      cookies[:locale] = locale
+      I18n.locale = locale
+    end
   end
+  
+  protected
   
   # Get locale code from request subdomain (like http://it.application.local:3000)
   # You have to put something like:
@@ -27,9 +33,17 @@ class ApplicationController < ActionController::Base
     (parsed_locale and I18n.available_locales.include? parsed_locale.to_sym) ? parsed_locale.to_sym  : nil
   end
   
-  def set_locale_from_url
+  def extract_locale_from_url
     parsed_locale = params[:locale]
     logger.warn "Parameter: #{parsed_locale}"
     (parsed_locale and I18n.available_locales.include? parsed_locale.to_sym) ? parsed_locale.to_sym  : nil
+  end
+  
+  def extract_locale_from_cookie
+    cookies[:locale]
+  end
+  
+  def extract_from_default
+    I18n.default_locale
   end
 end

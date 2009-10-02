@@ -1,15 +1,19 @@
 en:
+  de: german
+  en: english
+  
   week:
     show:
       previous_week: « previous week
       this_week: this week
       next_week: next week »
-      week_x_goes_from_to: "{{start}} until {{end}}"
+      week_x_goes_from_to: "{{start}} - {{end}}"
       week_x: "{{year}} - calendar week {{week}}"
       when_is_week_x: "When is calendar week {{week}}?"
       what_week_is_it: "What week is it?"
       week: week
       the_current_week_is: "The current week {{year}} is {{week}}"
+      see_this_page_in: "See this page in {{language}}."
       
     index:
       calendar_weeks: calendar weeks
