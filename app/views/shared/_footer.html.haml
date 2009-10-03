@@ -1,19 +1,5 @@
 #footer
   .center
-    .all_weeks
-      = link_to_previous_week week - 1, year
-      - (1..last_week(year)).each do |w|
-        - case w
-        - when (current_week and week)
-          %span.week= w
-        - when current_week
-          %span.week= link_to_week(w, year)
-        - when week
-          %span.week= w
-        - else
-          %span.week= link_to_week(w, year)
-        %span.separator |
-      = link_to_next_week week + 1, year
     .all_languages
       -I18n.available_locales.each do |locale|
         -link_to "?locale=#{locale}", :locale => locale do

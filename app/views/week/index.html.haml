@@ -4,9 +4,9 @@
     %h1=I18n.t("week.show.what_week_is_it")
   -else
     %h1=I18n.t("week.show.when_is_week_x", :week => @week)
-  = I18n.t('week.show.week_x_goes_from_to', :start => I18n.l(@start_date), :end => I18n.l(@end_date), :week => @week)
+  - I18n.t('week.show.week_x_goes_from_to', :start => I18n.l(@start_date), :end => I18n.l(@end_date), :week => @week)
   .calendar
-    .head=I18n.t('week.show.week')
+    .head= I18n.l(Date.today, :format => :short)
     .week
       %h1=link_to @week, root_path, :title => I18n.t('week.show.the_current_week_is', :year => Date.today.year, :week =>current_week)
   

@@ -5,7 +5,7 @@ de:
   date:
     formats:
       default: "%A, %e. %B %Y"
-      short: "%e. %b"
+      short: "%e. %b %Y"
       long: "%e. %B %Y"
       only_day: "%e"
 
