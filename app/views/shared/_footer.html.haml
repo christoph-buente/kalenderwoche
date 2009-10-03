@@ -3,4 +3,4 @@
     .all_languages
       -I18n.available_locales.each do |locale|
         -link_to "?locale=#{locale}", :locale => locale do
-          =image_tag "#{locale}.gif", :alt => locale, :title => I18n.t("week.show.see_this_page_in", :language => I18n.t(locale)), :width => "16px", :height => "11px"
+          =image_tag "#{locale}.gif", :alt => locale, :title => I18n.t("week.show.see_this_page_in", :language => I18n.t(locale)), :width => "16px", :height => "11px", :class => :icon

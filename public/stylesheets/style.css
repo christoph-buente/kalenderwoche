@@ -471,3 +471,8 @@ a {
 
 #footer .all_weeks {
   font-size: 8px; }
+#footer .all_languages a {
+  width: 16px;
+  height: 16px;
+  margin: 0px;
+  padding: 0px; }
