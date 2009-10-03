@@ -6,9 +6,12 @@
     %h1=I18n.t("week.show.when_is_week_x", :week => @week)
   - I18n.t('week.show.week_x_goes_from_to', :start => I18n.l(@start_date), :end => I18n.l(@end_date), :week => @week)
   .calendar
-    .head= I18n.l(Date.today, :format => :short)
+    .head{:title => I18n.t('week.show.today_is_the', :date => I18n.l(Date.today))}
+      = I18n.l(Date.today, :format => :short)
     .week
-      %h1=link_to @week, root_path, :title => I18n.t('week.show.the_current_week_is', :year => Date.today.year, :week =>current_week)
+      %h2{:title => I18n.t('week.show.the_current_week_is', :week =>current_week)}
+        =@week
+      .corner
   
 - content_for :meta do
   %meta{:name => "description", :content => "Wann ist eigentlich Kalenderwoche #{@week}? Sie können sich auch nie merken? Hier können sie jederzeit nachschauen"}

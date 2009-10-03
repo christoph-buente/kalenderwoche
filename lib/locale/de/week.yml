@@ -11,8 +11,9 @@ de:
       when_is_week_x: "Wann ist eigentlich Kalenderwoche {{week}}?"
       what_week_is_it: "Welche Kalenderwoche ist heute?"
       week: Woche
-      the_current_week_is: "Die aktuelle Kalenderwoche {{year}} ist {{week}}"
+      the_current_week_is: "Die aktuelle Kalenderwoche ist {{week}}"
       see_this_page_in: "Diese Seite auf {{language}} ansehen."
+      today_is_the: "Heute ist {{date}}"
       
     index:
       calendar_weeks: Kalenderwochen
