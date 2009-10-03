@@ -410,34 +410,47 @@ a {
   margin-right: auto; }
 
 .calendar {
-  height: 250px;
   width: 250px;
-  border: 1px solid #BBB;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-  -khtml-border-radius: 7px;
+  border: 0px solid #DDD;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   margin: 50px auto; }
-  .calendar .week h1 {
-    margin: 0px;
-    font-size: 150px;
-    line-height: 200px; }
-    .calendar .week h1 a {
-      text-decoration: none;
-      color: #000000; }
   .calendar .head {
     height: 50px;
     line-height: 50px;
-    font-size: 20px;
+    font-size: 24px;
     vertical-align: middle;
-    background-color: #D51007;
+    background: url('/images/red-gradient.png') repeat-x left;
+    border: 1px solid #B41800;
+    border-bottom: 1px solid #891E00;
     color: #FFF;
     font-weight: bold;
-    -moz-border-radius-topleft: 6px;
-    -webkit-border-top-left-radius: 6px;
-    -khtml-border-top-left-radius: 6px;
-    -moz-border-radius-topright: 6px;
-    -webkit-border-top-right-radius: 6px;
-    -khtml-border-top-right-radius: 6px; }
+    -moz-border-radius-topleft: 9px;
+    -webkit-border-top-left-radius: 9px;
+    -khtml-border-top-left-radius: 9px;
+    -moz-border-radius-topright: 9px;
+    -webkit-border-top-right-radius: 9px;
+    -khtml-border-top-right-radius: 9px; }
+  .calendar .week {
+    height: 200px;
+    -moz-border-radius-bottomleft: 9px;
+    -webkit-border-bottom-left-radius: 9px;
+    -khtml-border-bottom-left-radius: 9px;
+    -moz-border-radius-bottomright: 9px;
+    -webkit-border-bottom-right-radius: 9px;
+    -khtml-border-bottom-right-radius: 9px;
+    background: #FFF url('/images/grey-gradient.png') repeat-y left;
+    border: 1px solid #DDD;
+    border-top: 1px solid #FFF; }
+    .calendar .week h1 {
+      margin: 0px;
+      font-size: 150px;
+      line-height: 200px; }
+      .calendar .week h1 a {
+        text-decoration: none;
+        color: #000000; }
 
 #footer .all_weeks {
   font-size: 8px; }
