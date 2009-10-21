@@ -364,7 +364,10 @@ a {
     -khtml-border-top-left-radius: 15px;
     -moz-border-radius-topright: 15px;
     -webkit-border-top-right-radius: 15px;
-    -khtml-border-top-right-radius: 15px; }
+    -khtml-border-top-right-radius: 15px;
+    -moz-box-shadow: 0px 0px 5px #B41800;
+    -webkit-box-shadow: 0px 0px 5px #B41800;
+    box-shadow: 0px 0px 5px #B41800; }
   .calendar .week {
     height: 200px;
     -moz-border-radius-bottomleft: 15px;
@@ -373,6 +376,9 @@ a {
     -moz-border-radius-bottomright: 15px;
     -webkit-border-bottom-right-radius: 15px;
     -khtml-border-bottom-right-radius: 15px;
+    -moz-box-shadow: 0px 0px 5px #DDD;
+    -webkit-box-shadow: 0px 0px 5px #DDD;
+    box-shadow: 0px 0px 5px #DDD;
     border: 1px solid #DDD;
     border-top: 1px solid #FFF; }
     .calendar .week h2 {

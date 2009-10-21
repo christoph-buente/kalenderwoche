@@ -1,7 +1,21 @@
 @import 960.sass
 @import reset.sass
 @import text.sass
+!head_color = #B41800
+!week_color = #DDD
 
+!blur = 2px
+
+=head-drop-shadow
+  :-moz-box-shadow 0px 0px 5px #B41800
+  :-webkit-box-shadow 0px 0px 5px #B41800
+  :box-shadow 0px 0px 5px #B41800
+
+=week-drop-shadow
+  :-moz-box-shadow 0px 0px 5px #DDD
+  :-webkit-box-shadow 0px 0px 5px #DDD
+  :box-shadow 0px 0px 5px #DDD
+  
 a
   :color #D51007
 .center
@@ -40,6 +54,8 @@ a
     :-moz-border-radius-topright 15px
     :-webkit-border-top-right-radius 15px
     :-khtml-border-top-right-radius 15px
+    
+    +head-drop-shadow
   
   .week
     :height 200px
@@ -48,7 +64,8 @@ a
     :-khtml-border-bottom-left-radius 15px
     :-moz-border-radius-bottomright 15px
     :-webkit-border-bottom-right-radius 15px
-    :-khtml-border-bottom-right-radius 15px
+    :-khtml-border-bottom-right-radius 15px    
+    +week-drop-shadow
     
     :border 1px solid #DDD
     :border-top 1px solid #FFF
