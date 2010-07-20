@@ -44,3 +44,18 @@ namespace :deploy do
   end
   
 end
+
+namespace :passenger do
+  
+  desc "passenger memory stats"
+  task :memory, :roles => :app do
+    run "sudo /home/rails/.rvm/gems/ree-1.8.7-2010.02/bin/passenger-memory-stats" do |channel, stream, data|
+      puts data
+    end
+  end
+
+  desc "passenger general info"
+  task :status, :roles => :app  do
+    run "sudo /home/rails/.rvm/gems/ree-1.8.7-2010.02/bin/passenger-status"
+  end
+end
